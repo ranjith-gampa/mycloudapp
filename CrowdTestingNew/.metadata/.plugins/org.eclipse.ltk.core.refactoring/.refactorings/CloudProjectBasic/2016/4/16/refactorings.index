@@ -1,0 +1,15 @@
+1460683423936	Delete element
+1460683466982	Delete element
+1460683556780	Copy package
+1460683562753	Delete element
+1460683703852	Delete element
+1460684027947	Rename resource 'Login.jsp'
+1460684074550	Rename resource 'Employeelogin.jsp'
+1460745859698	Rename resource 'Home_page.jsp'
+1460756933913	Rename package 'bean'
+1460756952692	Rename package 'controller'
+1460756976621	Rename package 'model'
+1460757087679	Move 'Home_page.html' to 'WebContent'
+1460757208697	Move 'EmployeeLogin.jsp' to 'WebContent'
+1460759875380	Rename type 'LoginModel'
+1460759951549	Rename type 'LoginController'

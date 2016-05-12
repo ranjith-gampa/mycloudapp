@@ -1,0 +1,322 @@
+
+<%@page import="Bean.EmployeeDetails"%>
+<%@page import=" java.sql.Connection" %>
+<%@page import=" java.sql.DriverManager"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<html lang="en">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cloud Application</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+   
+
+    <!-- Custom Fonts -->
+    <link href=./css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="./css/css.css" rel="stylesheet" type="text/css">
+    <link href="./css/css1.css" rel="stylesheet" type="text/css">
+    
+    <style type="text/css">
+    body {
+	background-color: #FFFBFB;
+}
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Employee DASHBOARD</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                     
+                    <a href="../Home_page.html" ><i class="fa fa-gear"></i>Log Out <b class="caret"></b></a>
+                  
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                	<li class="active"> <a href="ConsoleEmployeeHome.jsp"><em class="fa fa-fw fa-dashboard"></em>HOME</a> </li>
+                  <li class="active"> <a href="ConsoleEmployeeDetailsController"><em class="fa fa-fw fa-dashboard"></em>Details</a> </li>
+                  <li></li>
+                
+                    <li><a href="ConsoleTesterNewProject.jsp"><i class="fa fa-fw fa-edit"></i>Project Requests</a></li>
+                    <li><a href="ConsoleTesterOngoingProject.jsp"><em class="fa fa-fw fa-edit"></em>Ongoing Projects</a></li>
+                    <li><a href="BugReport.jsp"><em class="fa fa-fw fa-edit"></em>Bug Report</a></li>
+					<li><a href="incentive.html"><em class="fa fa-fw fa-edit"></em>Incentives and Rewards</a></li>
+                    <li><a href="grades.html"><em class="fa fa-fw fa-edit"></em>Grades</a></li>
+                  
+                </ul>
+    </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                    
+                     
+             
+                      </ol>
+                    </div>
+                </div>
+      </div>
+	  </div>
+	  
+	  <c:forEach var="EmployeeDetails" items="${Em}">
+	   
+    
+	  
+	  <table>
+	<thead>
+	<tr>
+		<th style="text-align:center">Personal Details</th>
+		
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td><table>
+		<thead> 
+		
+		<tr>
+		<th style="text-align:center">First Name </th> 
+		<th style="text-align:center">Last Name</th>
+		
+		</tr>
+		<td> <c:out value="${EmployeeDetails.firstName}"/><br> </br> </td>
+		<td> <c:out value="${EmployeeDetails.lastName}"/><br> </br> </td>
+		
+		
+		</thead>
+		</tbody>
+		</table>
+		
+		
+	 <table>
+	<thead>
+	<tr>
+		<th style="text-align:center">Account Details</th>
+		
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td><table>
+		<thead> 
+		<tr>
+		<th style="text-align:center">Username </th> 
+		<th style="text-align:center">Email</th>
+		
+		</tr>
+		<td>  <c:out value="${EmployeeDetails.username}"/><br> </br> </td>
+		<td><c:out value="${EmployeeDetails.email}"/></td>
+		
+		</thead>
+		</tbody>
+		</table>
+	
+	 <table>
+	<thead>
+	<tr>
+		<th style="text-align:center">Employee Records</th>
+		
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td><table>
+		<thead> 
+		<tr>
+		<th style="text-align:center">Job Title</th> 
+		<th style="text-align:center">Reports To</th>
+		<th style="text-align:center">Office </th>
+		</tr>
+		<td> <c:out value="${EmployeeDetails.jobTitle}"/><br> </br> <li></li></td>
+		<td> <c:out value="${EmployeeDetails.repTo}"/> <c:out value=" ("/> <c:out value="${EmployeeDetails.repToTitle}"/> <c:out value=") "/><br> </br> <li></li></td>
+		<td> <c:out value="${EmployeeDetails.officeaddress[0]}"/> 
+			 <c:out value=", "/>
+			 <c:out value="${EmployeeDetails.officeaddress[1]}"/><br> </br>
+			 <c:out value="${EmployeeDetails.officeaddress[2]}"/>
+			 <c:out value=", "/>
+			 <c:out value="${EmployeeDetails.officeaddress[3]}"/><br> </br>
+			 <c:out value="${EmployeeDetails.officeaddress[4]}"/><br> </br>
+		<li></li></td>
+		
+		</thead>
+		</tbody>
+		</table>
+		</td>
+		</tr>
+		</tbody>
+		</table>
+		</td>
+		</tr>
+		</tbody>
+		</table>
+		
+		
+		
+
+</c:forEach>
+<c:forEach var="AllEmployeeDetails" items="$allemp">
+<% int ct=0;%>
+
+
+<table>
+	<thead>
+	<tr>
+		<th style="text-align:center">Employees</th>
+	</tr>
+		
+	</thead>
+	<tbody>
+		<tr>
+		<td>
+		<table>
+			<thead> 
+				<tr>
+					<th style="text-align:center">Employee Number</th> 
+					<th style="text-align:center">First Name</th> 
+					<th style="text-align:center">Last Name</th>
+					<th style="text-align:center">Extension</th>
+					<th style="text-align:center">Email</th>
+					<th style="text-align:center">Office Code </th>
+					<th style="text-align:center">Reports To</th>
+					<th style="text-align:center">Job Title</th>
+				</tr>
+			</thead>
+		</table>
+		</td>
+		</tr>
+		<tr>
+			<td>
+				
+			</td>
+		</tr>
+	</tbody>
+</table>
+</c:forEach>
+
+
+<table border="2">
+<tr>
+<td>Employee Number</td>
+<td>First Name</td>
+<td>Last Name</td>
+<td>Extension</td>
+<td>Email</td>
+<td>Office Code</td>
+<td>Reports To</td>
+<td>job Title</td>
+
+
+</tr>
+<%
+try
+{
+	
+Class.forName("com.mysql.jdbc.Driver");
+String url="jdbc:mysql://localhost:3306/classicmodels";
+String username="root";
+String password="Rohit";
+String query="select * from employees where email!=?";
+Connection conn=DriverManager.getConnection(url,username,password);
+PreparedStatement stmt=conn.prepareStatement("select * from employees where email!=?");
+stmt.setString(1,"President" );
+ResultSet rs=stmt.executeQuery();
+while(rs.next())
+{
+
+%>
+    <tr><td><%rs.getString(1); %></td></tr>
+    <tr><td><%rs.getString(2); %></td></tr>
+    <tr><td><%rs.getString(3); %></td></tr>
+    <tr><td><%rs.getString(4); %></td></tr>
+    <tr><td><%rs.getString(5); %></td></tr>
+    <tr><td><%rs.getString(7); %></td></tr>
+    <tr><td><%rs.getString(8); %></td></tr>
+    <tr><td><%rs.getString(9); %></td></tr>
+        <%
+
+}
+%>
+    </table>
+    <%
+    rs.close();
+    stmt.close();
+    conn.close();
+    }
+catch(Exception e)
+{
+    e.printStackTrace();
+    }
+
+
+
+
+%>
+
+
+
+
+
+
+
+
+
+
+                <!-- /.row -->
+
+               
+
+       
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+   
+
+</body>
+
+</html>
